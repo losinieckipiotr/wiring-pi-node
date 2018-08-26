@@ -1,0 +1,16 @@
+{
+  "name": "wiring-pi-node",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "node led.js",
+    "build": "./build.sh",
+    "install": "git clone https://github.com/raspberrypi/tools",
+    "copy": "scp -v led.js ./build/Release/wiringPiNode.node pi@192.168.1.20:/home/pi/programowanie/node-dev",
+    "copy-test": "scp -v led.js pi@192.168.1.20:/home/pi/programowanie/node-dev"
+  },
+  "author": "Losiniecki Piotr",
+  "license": "ISC",
+  "gypfile": true
+}
