@@ -10,7 +10,9 @@ public:
   ~GpioLed();
 
   void Setup();
-  bool IsOn() const { return isOn_; }
+
+  bool IsOn() const;
+
   void On();
   void Off();
 

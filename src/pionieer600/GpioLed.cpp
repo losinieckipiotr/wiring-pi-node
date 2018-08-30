@@ -15,7 +15,7 @@ GpioLed::GpioLed()
 
 GpioLed::~GpioLed()
 {
-  Off();
+
 }
 
 void GpioLed::Setup()
@@ -23,6 +23,11 @@ void GpioLed::Setup()
   WiringPi::SetPinMode(LED_PIN, OUTPUT);
   WiringPi::DigitalWrite(LED_PIN, 0);
   isOn_ = false;
+}
+
+bool GpioLed::IsOn() const
+{
+  return isOn_;
 }
 
 void GpioLed::On()

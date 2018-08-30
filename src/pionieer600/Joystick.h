@@ -32,7 +32,6 @@ private:
   HandlerT clickHandler_;
   HandlerT holdHandler_;
 
-  uv_loop_t *loop;
   uv_thread_t worker_;
   uv_async_t asyncClick_;
   uv_async_t asyncHold_;
@@ -45,6 +44,6 @@ public:
   };
 };
 
-}
+} // namespace pionieer600
 
 #endif // !PIONIEER_600_JOYSTICK_H

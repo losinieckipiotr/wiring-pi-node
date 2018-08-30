@@ -4,11 +4,10 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "node led.js",
+    "test": "node wpiTest.js",
     "build": "./build.sh",
-    "install": "git clone https://github.com/raspberrypi/tools",
-    "copy": "scp -v led.js ./build/Release/wiringPiNode.node pi@192.168.1.20:/home/pi/programowanie/node-dev",
-    "copy-test": "scp -v led.js pi@192.168.1.20:/home/pi/programowanie/node-dev"
+    "tools": "git clone https://github.com/raspberrypi/tools",
+    "copy": "scp -v wpiTest.js build/Release/wiringPiNode.node pi@192.168.1.20:/home/pi/programowanie/node-dev"
   },
   "author": "Losiniecki Piotr",
   "license": "ISC",

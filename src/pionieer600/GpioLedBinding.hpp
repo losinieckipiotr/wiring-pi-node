@@ -5,6 +5,7 @@
 
 namespace pionieer600 {
 namespace binding {
+namespace gpio_led {
 
 static GpioLed gpioLed;
 
@@ -32,11 +33,18 @@ void GpioLedInstance(const v8::FunctionCallbackInfo<v8::Value>& args) {
   args.GetReturnValue().Set(gpioLedObj);
 }
 
-void GpioLedInit(v8::Local<v8::Object> exports) {
+static void GpioLedClean(void *arg) {
+  gpioLed.Off();
+}
+
+static void GpioLedInit(v8::Local<v8::Object> exports) {
   gpioLed.Setup();
 
   NODE_SET_METHOD(exports, "gpioLed", GpioLedInstance);
+
+  node::AtExit(GpioLedClean);
 }
 
+} // namespace gpio_led
 } // namepsace binding
 } // namespace pionieer600

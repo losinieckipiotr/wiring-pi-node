@@ -53,19 +53,25 @@ void StopWatch(const v8::FunctionCallbackInfo<v8::Value>& args) {
 }
 
 void JoystickInstance(const v8::FunctionCallbackInfo<v8::Value>& args) {
-  joystick.Setup(); // setup joystick
-
   v8::Isolate* isolate = args.GetIsolate();
   v8::Local<v8::Object> joystickObj = v8::Object::New(isolate); // create joystick obj
 
   NODE_SET_METHOD(joystickObj, "watch", Watch);
-    NODE_SET_METHOD(joystickObj, "stopWatch", StopWatch);
+  NODE_SET_METHOD(joystickObj, "stopWatch", StopWatch);
 
   args.GetReturnValue().Set(joystickObj);
 }
 
-void JoysticInit(v8::Local<v8::Object> exports) {
+static void JoystickClean(void *arg) {
+  joystick.StopWatch();
+}
+
+static void JoysticInit(v8::Local<v8::Object> exports) {
+  joystick.Setup(); // setup joystick
+
   NODE_SET_METHOD(exports, "joystick", JoystickInstance);
+
+  node::AtExit(JoystickClean);
 }
 
 } // namepsace binding

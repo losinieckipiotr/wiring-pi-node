@@ -4,7 +4,6 @@
 
 constexpr auto PIN = 28;
 
-using namespace std;
 using namespace wiringPi;
 using namespace pionieer600;
 
@@ -33,14 +32,11 @@ void Joystick::Watch(HandlerT clickHandler, HandlerT holdHandler) {
 
 void Joystick::StopWatch() {
   ShutdownWorker();
-
-  uv_close(reinterpret_cast<uv_handle_t*>(&asyncClick_), nullptr);
-  uv_close(reinterpret_cast<uv_handle_t*>(&asyncHold_), nullptr);
 }
 
 void Joystick::StartWorker()
 {
-  loop = uv_default_loop();
+  const auto loop = uv_default_loop();
   uv_async_init(loop, &asyncClick_, [](uv_async_t *handle)
   {
     auto self = static_cast<Joystick*>(handle->data);
@@ -53,9 +49,10 @@ void Joystick::StartWorker()
   });
 
   ShutdownWorker();
-  work_ = true;
-  uv_thread_create(&worker_, [](void *arg) {
+  uv_thread_create(&worker_, [](void *arg)
+  {
     auto self = static_cast<Joystick*>(arg);
+    self->work_ = true;
     self->DoPooling_();
   }, this);
 }
@@ -89,9 +86,12 @@ void Joystick::DoPooling_()
 
 void Joystick::ShutdownWorker()
 {
-  work_ = false;
-  // TOREMOVE
-  // if (worker_.joinable())
-  //   worker_.join();
-  uv_thread_join(&worker_);
+  if (work_)
+  {
+    work_ = false;
+    uv_thread_join(&worker_);
+
+    uv_close(reinterpret_cast<uv_handle_t*>(&asyncClick_), nullptr);
+    uv_close(reinterpret_cast<uv_handle_t*>(&asyncHold_), nullptr);
+  }
 }

@@ -9,7 +9,8 @@
         './src/binding.cc',
         './src/wiringPi/WiringPi.cpp',
         './src/pionieer600/GpioLed.cpp',
-        './src/pionieer600/Joystick.cpp'
+        './src/pionieer600/Joystick.cpp',
+        './src/pionieer600/Buzzer.cpp'
       ],
       'include_dirs': [
         # wiringPi headers
