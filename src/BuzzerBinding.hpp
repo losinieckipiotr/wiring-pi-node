@@ -1,13 +1,12 @@
 #include <node.h>
 #include <v8.h>
 
-#include "Buzzer.h"
+#include "pionieer600/Buzzer.h"
 
-namespace pionieer600 {
 namespace binding {
 namespace buzzer {
 
-static Buzzer buzzer;
+static pionieer600::Buzzer buzzer;
 
 void IsOn(const v8::FunctionCallbackInfo<v8::Value>& args) {
   v8::Isolate* isolate = args.GetIsolate();
@@ -47,4 +46,3 @@ static void BuzzerInit(v8::Local<v8::Object> exports) {
 
 } // namepsace buzzer
 } // namepsace binding
-} // namespace pionieer600

@@ -1,13 +1,12 @@
 #include <node.h>
 #include <v8.h>
 
-#include "GpioLed.h"
+#include "pionieer600/GpioLed.h"
 
-namespace pionieer600 {
 namespace binding {
 namespace gpio_led {
 
-static GpioLed gpioLed;
+static pionieer600::GpioLed gpioLed;
 
 void IsOn(const v8::FunctionCallbackInfo<v8::Value>& args) {
   v8::Isolate* isolate = args.GetIsolate();
@@ -47,4 +46,3 @@ static void GpioLedInit(v8::Local<v8::Object> exports) {
 
 } // namespace gpio_led
 } // namepsace binding
-} // namespace pionieer600

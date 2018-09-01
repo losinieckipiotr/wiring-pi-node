@@ -10,7 +10,8 @@
         './src/wiringPi/WiringPi.cpp',
         './src/pionieer600/GpioLed.cpp',
         './src/pionieer600/Joystick.cpp',
-        './src/pionieer600/Buzzer.cpp'
+        './src/pionieer600/Buzzer.cpp',
+        './src/pionieer600/Bmp180.cpp'
       ],
       'include_dirs': [
         # wiringPi headers

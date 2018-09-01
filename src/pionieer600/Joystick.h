@@ -6,11 +6,10 @@
 #include <uv.h>
 
 namespace pionieer600 {
-
-using HandlerT = std::function<void(void)>;
-
 class Joystick
 {
+using HandlerT = std::function<void(void)>;
+
 public:
   Joystick();
   ~Joystick();
@@ -38,7 +37,7 @@ private:
 public:
   enum
   {
-    INTERVAL = 100,
+    INTERVAL = 10,
     HOLD_TIME = 1000,
     HOLD_TICKS = HOLD_TIME / INTERVAL
   };

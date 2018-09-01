@@ -1,12 +1,12 @@
 #include <node.h>
 #include <v8.h>
 
-#include "Joystick.h"
+#include "pionieer600/Joystick.h"
 
-namespace pionieer600 {
 namespace binding {
+namespace joystick {
 
-static Joystick joystick;
+static pionieer600::Joystick joystick;
 static v8::Persistent<v8::Function> onClick;
 static v8::Persistent<v8::Function> onHold;
 
@@ -74,5 +74,5 @@ static void JoysticInit(v8::Local<v8::Object> exports) {
   node::AtExit(JoystickClean);
 }
 
+} // namesapce joystick
 } // namepsace binding
-} // namespace pionieer600

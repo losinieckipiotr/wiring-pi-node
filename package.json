@@ -7,7 +7,7 @@
     "test": "node wpiTest.js",
     "build": "./build.sh",
     "tools": "git clone https://github.com/raspberrypi/tools",
-    "copy": "scp -v wpiTest.js build/Release/wiringPiNode.node pi@192.168.1.20:/home/pi/programowanie/node-dev"
+    "copy": "scp -v wpiTest.js build/Release/wiringPiNode.node pi@192.168.1.20:/home/pi/rasp-dev"
   },
   "author": "Losiniecki Piotr",
   "license": "ISC",
