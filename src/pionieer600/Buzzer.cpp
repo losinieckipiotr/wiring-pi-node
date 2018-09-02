@@ -34,10 +34,10 @@ void Buzzer::On()
   if (worker_running_ == false)
   {
     Off();
+    worker_running_ = true; // worker will be started again
     uv_thread_create(&worker_, [](void *arg)
     {
       auto self = static_cast<Buzzer*>(arg);
-      self->worker_running_ = true;
       self->workerFunc_();
     }, this);
   }

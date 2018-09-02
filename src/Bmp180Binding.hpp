@@ -1,7 +1,7 @@
 #include <node.h>
 #include <v8.h>
 
-#include "pionieer600/BMP180.h"
+#include "pionieer600/Bmp180.h"
 
 namespace binding {
 namespace bmp_180 {
